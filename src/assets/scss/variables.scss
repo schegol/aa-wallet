@@ -1,0 +1,35 @@
+$default-bg-color: #EEE;
+$accent-color: #D16E07;
+$text-color: #1E1E1E;
+$phone-placeholder-color: rgba(30,30,30,.7);
+$form-placeholder-color: rgba(30,30,30,.3);
+$dev-info-color: rgba(30,30,30,.5);
+$modal-bg: rgba(#fff,.7);
+$profile-head-bg: rgba(#fff,.6);
+$coffee-widget-bg: rgba($default-bg-color,.6);
+$error-color-start: #F3F3F3;
+$error-color-end: #DE9950;
+$swipe-modal-handle-color: rgba(30,30,30,.2);
+$btn-menu-bg-color: rgba(238, 238, 238, 0.3);
+$fav-btn-color: #D7443E;
+$slider-thumb-bg-color: #523A28;
+$pale-text-color: #666;
+$pale-bonus-text-color: #777;
+
+$intro-gradient: linear-gradient(to bottom, $default-bg-color 0, $default-bg-color 670px, $accent-color 790px);
+$intro-content-gradient: linear-gradient(to bottom, #f8f8f8 320px, rgba(#fff,.6) 350px, rgba(#fff,.6) 100%);
+$app-gradient: linear-gradient(to bottom, $accent-color 0, $accent-color 160px, $default-bg-color 280px);
+
+$box-shadow: 0 4px 4px rgba(0,0,0,.25);
+$box-shadow-heavy: 0 4px 15px rgba(0,0,0,.25);
+$box-shadow-layer: 0 0 15px rgba(0,0,0,.25);
+$footer-shadow: 0 4px 30px 6px rgba(0,0,0,.25);
+$error-shadow: 0 4px 30px 5px rgba(0,0,0,.25);
+$swipe-modal-shadow: 0 4px 30px 10px rgba(0,0,0,.25);
+
+$border-radius: 30px;
+$border-radius-small: 15px;
+$bg-blur: blur(70px);
+$profile-head-bg-blur: blur(15px);
+$second-layer-bg-blur: blur(35px);
+$textarea-container-btn-border: 2px solid rgba($text-color,.5);
