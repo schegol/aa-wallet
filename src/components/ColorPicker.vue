@@ -12,6 +12,9 @@
                         min="0"
                         max="359"
                         step="1"
+                        v-model="initialColor.h"
+                        @change="changeHue"
+                        @input="inputHue"
                     >
                 </div>
 
@@ -23,6 +26,9 @@
                         min="0"
                         max="100"
                         step="1"
+                        v-model="initialColor.s"
+                        @change="changeSaturation"
+                        @input="inputSaturation"
                     >
                 </div>
 
@@ -34,6 +40,9 @@
                         min="0"
                         max="100"
                         step="1"
+                        v-model="initialColor.l"
+                        @change="changeLightness"
+                        @input="inputLightness"
                     >
                 </div>
             </div>
@@ -45,14 +54,37 @@
 export default {
     props: ['initialSize', 'color'],
     data: () => ({
-
+        
     }),
     computed: {
+        initialColor() {
+            return this.color;
+        },
         size() {
             return this.initialSize + 'px';
         },
         btnColor() {
             return 'hsl(' + this.color.h + ',' + this.color.s + '%,' + this.color.l + '%)';
+        },
+    },
+    methods: {
+        changeHue() {
+            console.log('changeHue');
+        },
+        inputHue() {
+            console.log('inputHue');
+        },
+        changeSaturation() {
+            console.log('changeSaturation');
+        },
+        inputSaturation() {
+            console.log('inputSaturation');
+        },
+        changeLightness() {
+            console.log('changeLightness');
+        },
+        inputLightness() {
+            console.log('inputLightness');
         },
     },
 }
@@ -73,17 +105,31 @@ export default {
         height: v-bind(size);
         padding: 5px;
         border: 1px solid;
-        border-radius: v-bind(size);
+        border-radius: calc(v-bind(size) / 2);
+        overflow: hidden;
+
+        width: 300px;
+        height: 200px;
     }
 
     .color-picker__btn {
         display: block;
-        width: calc(v-bind(size) - 10px);
+        width: 100%;
+        max-width: calc(v-bind(size) - 10px);
+        min-height: calc(v-bind(size) - 10px);
         height: 100%;
-        margin: auto;
+        max-height: 100%;
+        margin-left: auto;
         padding: 0;
         background-color: v-bind(btnColor);
         border: none;
         border-radius: calc(v-bind(size) / 2 - 5px);
+    }
+
+    .color-picker__controls-wrapper {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        z-index: -1;
     }
 </style>
