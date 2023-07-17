@@ -96,7 +96,7 @@ export default {
             return 'hsl(' + this.initialHue + ', ' + this.initialSaturation + '%, 50%)';
         },
         lightnessThumbColor() {
-            return 'hsl(' + this.initialHue + ', 100%, ' + this.initialLightness + '%)';
+            return 'hsl(' + this.initialHue + ', 0%, ' + this.initialLightness + '%)';
         },
         
         size() {
