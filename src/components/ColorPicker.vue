@@ -26,7 +26,7 @@
                         min="0"
                         max="100"
                         step="1"
-                        :value="initialSaturation"
+                        v-model="initialSaturation"
                         @change="changeSaturation"
                         @input="inputSaturation"
                     >
@@ -40,7 +40,7 @@
                         min="0"
                         max="100"
                         step="1"
-                        :value="initialLightness"
+                        v-model="initialLightness"
                         @change="changeLightness"
                         @input="inputLightness"
                     >
@@ -52,64 +52,62 @@
 
 <script>
 export default {
-    props: ['initialSize', 'color'],
+    props: ['initialSize', 'colorName'],
     data: () => ({
         
     }),
     computed: {
-        // initialColor() {
-        //     return this.color;
-        // },
-        initialHue() {
-            return this.color.h;
+        initialHue: {
+            get() {
+                return this.$store.state.system[this.colorName].h;
+            },
+            set(newValue) {
+                const colorName = this.colorName;
+                this.$store.dispatch('passColorHue', {newValue, colorName});
+            },
         },
-        initialSaturation() {
-            return this.color.s;
+        initialSaturation: {
+            get() {
+                return this.$store.state.system[this.colorName].s;
+            },
+            set(newValue) {
+                const colorName = this.colorName;
+                this.$store.dispatch('passColorSaturation', {newValue, colorName});
+            },
         },
-        initialLightness() {
-            return this.color.l;
+        initialLightness: {
+            get() {
+                return this.$store.state.system[this.colorName].l;
+            },
+            set(newValue) {
+                const colorName = this.colorName;
+                this.$store.dispatch('passColorLightness', {newValue, colorName});
+            },
         },
 
         saturationGradient() {
-            return 'linear-gradient(to right, hsl(' + this.color.h + ', 0%, 50%) 0%, hsl(' + this.color.h + ', 100%, 50%) 100%)';
+            return 'linear-gradient(to right, hsl(' + this.initialHue + ', 0%, 50%) 0%, hsl(' + this.initialHue + ', 100%, 50%) 100%)';
         },
 
         hueThumbColor() {
-            return 'hsl(' + this.color.h + ', 100%, 50%)';
+            return 'hsl(' + this.initialHue + ', 100%, 50%)';
         },
         saturationThumbColor() {
-            return 'hsl(' + this.color.h + ', ' + this.color.s + '%, 50%)';
+            return 'hsl(' + this.initialHue + ', ' + this.initialSaturation + '%, 50%)';
         },
         lightnessThumbColor() {
-            return 'hsl(' + this.color.h + ', 100%, ' + this.color.l + '%)';
+            return 'hsl(' + this.initialHue + ', 100%, ' + this.initialLightness + '%)';
         },
         
         size() {
             return this.initialSize + 'px';
         },
         btnColor() {
-            return 'hsl(' + this.color.h + ', ' + this.color.s + '%, ' + this.color.l + '%)';
+            return 'hsl(' + this.initialHue + ', ' + this.initialSaturation + '%, ' + this.initialLightness + '%)';
         },
     },
     methods: {
-        changeHue() {
-            console.log('changeHue');
-        },
-        inputHue() {
-            console.log('inputHue');
-        },
-        changeSaturation() {
-            console.log('changeSaturation');
-        },
-        inputSaturation() {
-            console.log('inputSaturation');
-        },
-        changeLightness() {
-            console.log('changeLightness');
-        },
-        inputLightness() {
-            console.log('inputLightness');
-        },
+
     },
 }
 </script>
